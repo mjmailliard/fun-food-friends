@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-
+import firebase from './firebase.js';
 
 class App extends Component {
   constructor() {
@@ -10,13 +10,26 @@ class App extends Component {
       userName: ''
     }
 this.handleChange = this.handleChange.bind(this);
-  }
+this.handleSubmit = this.handleSubmit.bind(this);
+}
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
     });
   }
-  
+  handleSubmit(event) {
+    event.preventDefault();
+    const itemsRef = firebase.database().ref('items');
+    const item = {
+      title: this.state.currentItem,
+      user: this.state.userName
+    }
+    itemsRef.push(item);
+    this.setState({
+      currentItem: '',
+      userName: ''
+    })
+  }
   render() {
     return (
       <div className='app'>
@@ -28,7 +41,7 @@ this.handleChange = this.handleChange.bind(this);
         </header>
         <div className='container'>
           <section className='add-item'>
-              <form>
+              <form onSubmit={this.handleSubmit}>
                 <input type="text" name="userName" placeholder="What's your name?" onChange={this.handleChange} value={this.state.userName} />
                 <input type="text" name="currentItem" placeholder="What are you bringing?" onChange={this.handleChange} value={this.state.currentItem} />
                 <button>Add Item</button>
