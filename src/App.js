@@ -7,10 +7,28 @@ class App extends Component {
     super();
     this.state = {
       currentItem: '',
-      userName: ''
+      userName: '',
+      items: []
     }
 this.handleChange = this.handleChange.bind(this);
 this.handleSubmit = this.handleSubmit.bind(this);
+}
+componentDidMount() {
+  const itemsRef = firebase.database().ref('items');
+  itemsRef.on('value', (callback) => {
+let items = callback.val();
+let newState = [];
+for (let item in items){
+  newState.push({
+    id: item,
+    title: items[item].title,
+    user: items[item].user
+});
+}
+this.setState({
+  items: newState
+});
+  });
 }
   handleChange(event) {
     this.setState({
@@ -50,6 +68,14 @@ this.handleSubmit = this.handleSubmit.bind(this);
           <section className='display-item'>
             <div className='wrapper'>
               <ul>
+                {this.state.items.map((item)=> {
+                  return (
+                    <li key={item.id}>
+                      <h3>{item.title}</h3>
+                      <p>brought by: {item.user}</p>
+                    </li>
+                  )
+                })}
               </ul>
             </div>
           </section>
