@@ -57,7 +57,7 @@ this.setState({
       <div className='app'>
         <header>
             <div className='wrapper'>
-              <h1>Fun Food Friends</h1>
+              <h1>Potluck Planner</h1>
               
             </div>
         </header>
@@ -66,7 +66,7 @@ this.setState({
               <form onSubmit={this.handleSubmit}>
                 <input type="text" name="userName" placeholder="What's your name?" onChange={this.handleChange} value={this.state.userName} />
                 <input type="text" name="currentItem" placeholder="What are you bringing?" onChange={this.handleChange} value={this.state.currentItem} />
-                <button>Add Item</button>
+                <button className="addItemButton">Add Item</button>
               </form>
           </section>
           <section className='display-item'>
