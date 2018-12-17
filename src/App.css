@@ -7,6 +7,7 @@ header {
   color: #fff;
   background-color: #103D5D;
   padding: 33px 0 25px 15px;
+ 
 }
 
 header h1 {
@@ -31,14 +32,15 @@ header i {
 
 .container {
   display: flex;
-  max-width: 1100px;
+  max-width: 100vw;
   margin: 0 auto;
   padding-top: 30px;
 }
 
 .wrapper {
-  max-width: 1100px;
+  max-width: 100%;
   margin: 0 auto;
+
 }
 
 .add-item {
@@ -52,11 +54,12 @@ header i {
   width: 25%;
   margin-right: auto;
   border-radius: 5px;
+  min-width: 220px;
 }
 
 .display-item {
   width: 65%;
-  margin-left: 50px;
+  margin-left: 25px;
   border-radius: 5px;
 }
 
@@ -86,7 +89,7 @@ input {
 }
 
 ul {
-  display: flex;
+  display: -webkit-flex;
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
@@ -102,6 +105,7 @@ li {
   margin-bottom: 30px;
   box-shadow: 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12), 0 1px 8px 0 rgba(0,0,0,.2);
   border-radius: 5px;
+  min-width: 150px;
 
 }
 
@@ -109,6 +113,7 @@ h2 {
   padding: 0;
   margin: 0;
   font-weight: 400;
+ 
 }
 
 li h3 {
